@@ -1,0 +1,9 @@
+name    'lsit-hosts'
+version '0.0.1'
+source 'UNKNOWN'
+author 'lsit'
+license 'Distributed under the New BSD License'
+summary 'Manage the /etc/hosts file'
+description 'Manage /etc/hosts with entries stored in hiera data store.'
+project_page 'UNKNOWN'
+

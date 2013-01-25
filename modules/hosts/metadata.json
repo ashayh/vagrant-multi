@@ -1,0 +1,24 @@
+{
+  "version": "0.0.1",
+  "description": "Manage /etc/hosts with entries stored in hiera data store.",
+  "source": "UNKNOWN",
+  "summary": "Manage the /etc/hosts file",
+  "project_page": "UNKNOWN",
+  "author": "lsit",
+  "checksums": {
+    "spec/spec_helper.rb": "a55d1e6483344f8ec6963fcb2c220372",
+    "README": "5e957d69e94e937d26ad9dee334807dc",
+    "tests/init.pp": "669ed02ca7363697bf7491d75e9ceac3",
+    "templates/hosts.erb": "d9d8ee83e6419c6191187aa3a3ff30ef",
+    "Modulefile": "60c32b139eb07d5dbe636f1fd5b7a4d8",
+    "manifests/init.pp": "ef2b5a76f5443d6c938a066157ce02db"
+  },
+  "dependencies": [
+
+  ],
+  "license": "Distributed under the New BSD License",
+  "name": "lsit-hosts",
+  "types": [
+
+  ]
+}

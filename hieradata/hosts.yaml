@@ -1,0 +1,13 @@
+hosts:
+  - name: ambari-master.localdomain
+    ip: 192.168.1.10
+    memory: 1024
+  - name: data1.localdomain
+    ip: 192.168.1.11
+    memory: 1024
+  - name: data2.localdomain
+    ip: 192.168.1.12
+    memory: 1024
+  - name: data3.localdomain
+    ip: 192.168.1.13
+    memory: 1024

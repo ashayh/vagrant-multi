@@ -1,0 +1,36 @@
+## <%= puppetheader %>
+# /etc/hosts: Local Host Database
+#
+# This file describes a number of aliases-to-address mappings for the for 
+# local hosts that share this file.
+#
+# In the presence of the domain name service or NIS, this file may not be 
+# consulted at all; see /etc/host.conf for the resolution order.
+##  
+
+## IPv4 and IPv6 localhost aliases
+127.0.0.1	localhost
+::1		localhost
+<%= ipaddress_eth0 %>    <%= fqdn %> <%= hostname %>
+
+<% if (!node_hosts_hsh.empty?)  -%>
+## Node Specific Host entries
+<% node_hosts_hsh.sort.each do |key,val| -%>
+
+# <%= key %>
+<% val.each do |arr_val|  -%>
+<%= arr_val %>
+<% end -%>
+<% end -%>
+<% end -%>
+
+<% if (!site_hosts_hsh.empty?)  -%>
+## Site-Wide Host Entries
+<% site_hosts_hsh.sort.each do |key,val| -%>
+
+# <%= key %>
+<% val.each do |arr_val|  -%>
+<%= arr_val %>
+<% end -%>
+<% end -%>
+<% end -%>

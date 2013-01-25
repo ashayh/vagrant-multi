@@ -1,0 +1,8 @@
+---
+puppetheader: managed by puppet
+hosts::site_hosts_hsh:
+  ambari_hosts:
+  - 192.168.1.10     ambari-master.localdomain ambari-master
+  - 192.168.1.11     data1.localdomain data1
+  - 192.168.1.12     data2.localdomain data2
+  - 192.168.1.13     data3.localdomain data3

@@ -1,0 +1,101 @@
+hosts
+
+Manage the /etc/hosts file.  Allows for a site-wide host and node-specific list
+ of host entries.  Data is stored in hiera.
+
+License
+-------
+Distributed under the New BSD License
+
+Contact
+-------
+Jose Guevarra jguevarra@lsit.ucsb.edu
+
+Support
+-------
+This module was tested on puppet 2.7.0, hiera 1.0.0
+
+Installation
+------------
+1. Install lsit-hosts module
+ 
+  Install the module by normal means.  You will also need to have puppet
+  setup to work with hiera as a data store. 
+
+  By default, the hosts module will write to /etc/hosts and use its own
+  template.
+
+
+2. Add site-wide host entries
+
+  Site-wide values are stored in "hosts::site_hosts_hsh".  Add site-wide hosts
+  entries to your common.yaml file or which ever file you use to store
+  site-wide heira values.  Entries are organized into sections; 
+  "Web Servers", by example below.  You must have at least one section.
+  See example below.
+  
+## hosts vars
+hosts::site_hosts_hsh:
+  'Web Servers':
+    - '10.0.16.10     yoda-priv.example.com yoda-priv'
+    - '10.0.16.11     chewbacca.example.com www.example.com chewbacca'
+    - '10.0.16.13     solo.example.com www2.example.com solo'
+  'Log Servers':
+    - '192.168.2.134     loghost1.example.com'
+    - '192.168.2.167     loghost2.example.com'
+    
+= Result =
+
+## Site-Wide Host Entries
+
+# Web Servers
+10.0.16.10     yoda-priv.example.com yoda-priv
+10.0.16.11     chewbacca.example.com www.example.com chewbacca
+10.0.16.13     solo.example.com www2.example.com solo
+
+# Log Servers
+192.168.2.134     loghost1.example.com
+192.168.2.167     loghost2.example.com
+
+
+3. Node-specific hosts entries
+  Node-specific value ware stored in "hosts::node_hosts_hsh".  You can
+  add hosts entries that are specific to a particular node by 
+  configuring hiera to lookup node-specific values first. Adding
+  the section "nodes/%{fqdn}" tells hiera took look for values 
+  in nodes yaml file(e.g. nodes/lea.example.com.yaml) before it 
+  searches the site-wide values.
+
+= example hiera.yaml =
+---
+:backends: - yaml
+
+:logger: console
+
+:hierarchy: - nodes/%{fqdn}
+            - common
+:yaml:
+   :datadir: /etc/puppet/hieradata
+
+
+4.  Overriding template and hosts file path
+  The template and hosts file path variables are stored in
+  "hosts::hosts_tmpl" and "hosts::hosts_path", respectively.  You can override
+  these values by setting them in either the site-wide or the 
+  node-specific data store.
+  
+  Note: When overriding the "hosts::hosts_tmpl", puppet will search with
+  respect to the default template directory.
+
+
+5. Set "puppetheader" variable(optional)
+  In general, it is a good idea to have a header on puppet-managed
+  files.  The hosts module expects a variable named "puppetheader"
+  to hold the puppet header string. By default, it uses 
+  "Managed By Puppet".  Override this by adding the "puppetheader"
+  value in your heira data store.
+
+
+
+
+
