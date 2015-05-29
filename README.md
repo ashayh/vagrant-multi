@@ -1,6 +1,8 @@
 vagrant-multi
 =============
 
+** One should now only use the hostsmanager plugin, or other such options: https://github.com/smdahlen/vagrant-hostmanager **
+
 Create multiple VMs with Vagrant, and manage their hosts files through puppet for hostname resolution.
 
 It is easy to spin up custom multi VM environments using Vagrant. Vagrant also lets you assign friendly 'names' which you can use to ssh to the VMs from the host. This is convenient, but is not useful inside the guests.
